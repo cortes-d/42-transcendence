@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./backend/src:/app/src
+      - ./frontend/src:/app/public
+    # For development with hot-reload (uncomment):
+    # command: npm run dev
+    # environment:
+    #   - NODE_ENV=development
