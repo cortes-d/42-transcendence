@@ -3,56 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <title>Clean Architecture Login</title>
+    <title><!-- Title --></title>
+    <!-- Add Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="app.js" defer></script>
 </head>
-<body class="flex items-center justify-center h-screen bg-gray-100">
-    <div class="bg-white p-6 rounded shadow-md w-96">
-        <h1 class="text-xl font-bold mb-4">Login</h1>
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="Username" 
-                   class="border p-2 mb-4 w-full rounded" required>
-            <input type="password" id="password" placeholder="Password" 
-                   class="border p-2 mb-4 w-full rounded" required>
-            <button type="submit" 
-                    class="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded w-full transition">
-                Login
-            </button>
-        </form>
-        <div id="message" class="mt-4 p-3 rounded hidden"></div>
+<body>
+  <div data-container="app">
+    <!-- App -->
+    <div class="min-h-full">
+      <div data-container="navbar">
+        <!-- Navbar --></div>
+      <header class="bg-white shadow-sm">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <h1 data-container="title" class="text-3xl font-bold tracking-tight text-gray-900"><!-- Title --></h1>
+        </div>
+      </header>
+      <main>
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <div data-container="content"><!-- Content --></div>
+        </div>
+      </main>
     </div>
-
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            try {
-                const response = await fetch('/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password }),
-                });
-
-                const result = await response.json();
-                showMessage(result.message, result.success ? 'success' : 'error');
-                
-                if (result.success) {
-                    // Redirect or handle successful login
-                }
-            } catch (error) {
-                showMessage('An error occurred. Please try again.', 'error');
-            }
-        });
-
-        function showMessage(text, type) {
-            const messageEl = document.getElementById('message');
-            messageEl.textContent = text;
-            messageEl.className = `mt-4 p-3 rounded ${type === 'success' 
-                ? 'bg-green-100 text-green-700' 
-                : 'bg-red-100 text-red-700'} block`;
-        }
-    </script>
+    <div data-container="sidebar-right"><!-- Sidebar right --></div>
+    <div data-container="sidebar-left"><!-- Sidebar left --></div>
+  </div>
+  
 </body>
 </html>
